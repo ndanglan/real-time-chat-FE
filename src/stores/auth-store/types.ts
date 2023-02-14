@@ -1,4 +1,4 @@
-import { TAuthPayload } from '../../interfaces/auth-interfaces';
+import { TAuthPayload, TLoginPayload } from '../../interfaces/auth-interfaces';
 import { SIGNUP_REQUEST, SIGNUP_SUCCESS, AUTHENTICATE_FAILURE, LOGIN_REQUEST, LOGIN_SUCCESS } from './actionTypes';
 
 export interface AuthState {
@@ -9,10 +9,11 @@ export interface AuthState {
 
 export interface SignUpRequest {
   type: typeof SIGNUP_REQUEST;
-  payload: TAuthPayload;
+  payload: TLoginPayload;
+  callbacks?: (response: any) => void;
 }
 
-export interface LoginRequest extends Omit<SignUpRequest, 'type'>  {
+export interface LoginRequest extends Omit<SignUpRequest, 'type'> {
   type: typeof LOGIN_REQUEST;
 }
 

@@ -2,26 +2,32 @@ import { AxiosResponse } from 'axios';
 import { all, call, put, takeLatest } from 'redux-saga/effects';
 
 import { signUpSuccess, loginSuccess, authenticateFailure } from './actions';
-import { SIGNUP_REQUEST, LOGIN_REQUEST, LOGIN_SUCCESS, AUTHENTICATE_FAILURE } from './actionTypes';
-import { AuthActions } from './types';
+import { SIGNUP_REQUEST, LOGIN_REQUEST } from './actionTypes';
+import { AuthActions, LoginRequest } from './types';
 import { TAuthPayload } from '../../interfaces/auth-interfaces';
-import { loginWithEmailPassWord, signUpUser } from '../../services/auth-services';
+import { loginWithEmailPassWord, signUpUser, loginWithFaceBookGoogle } from '@services/auth-services';
+import { ELoginType } from '../../variables/auth-variables';
 
-/*
-  Worker Saga: Fired on FETCH_TODO_REQUEST action
-*/
-function* loginSaga(action: { payload: TAuthPayload; type: typeof LOGIN_REQUEST }) {
+function* loginSaga(action: LoginRequest) {
   try {
-    const { email, password } = action.payload;
-    const user: AxiosResponse<any> = yield call(loginWithEmailPassWord, { email, password });
-    console.log('loginSaga', user);
-    yield put(loginSuccess({ user }));
+    const { email, password, type } = action.payload;
+    let response: AxiosResponse<any>;
+    switch (type) {
+      case ELoginType.GOOGLE:
+      case ELoginType.FACEBOOK:
+        response = yield call(loginWithFaceBookGoogle, type);
+        break;
+      default:
+        response = yield call(loginWithEmailPassWord, { email, password });
+        break;
+    }
+    // yield put(loginSuccess({ user }));
+    action.callbacks?.(response);
   } catch (error) {
     yield put(authenticateFailure({ error }));
   }
 }
-// signUpRequest
-// signUpSuccess
+
 function* signupSaga(action: { payload: TAuthPayload; type: typeof SIGNUP_REQUEST }) {
   try {
     const { email, password } = action.payload;
@@ -34,7 +40,7 @@ function* signupSaga(action: { payload: TAuthPayload; type: typeof SIGNUP_REQUES
 }
 
 function* watchAuthSaga() {
-  yield all([takeLatest(LOGIN_REQUEST, loginSaga),takeLatest(SIGNUP_REQUEST,signupSaga)]);
+  yield all([takeLatest(LOGIN_REQUEST, loginSaga), takeLatest(SIGNUP_REQUEST, signupSaga)]);
 }
 
 export default watchAuthSaga;
