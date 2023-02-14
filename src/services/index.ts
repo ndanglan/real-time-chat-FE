@@ -1,7 +1,7 @@
 import axios, { AxiosError, AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig } from 'axios';
-import { EAuthToken } from '../variables';
-import { TAuthToken } from '../interfaces/auth-interfaces';
-import { handleStorageToken } from '../utils/storage';
+import { EAuthToken } from '@variables/auth-variables';
+import { TAuthToken } from '@interfaces/auth-interfaces';
+import { handleStorageToken } from '@utils/storage';
 
 const apiClient = axios.create({
   baseURL: process.env.REACT_APP_BASE_URL,

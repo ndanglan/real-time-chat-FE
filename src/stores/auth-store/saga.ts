@@ -4,9 +4,9 @@ import { all, call, put, takeLatest } from 'redux-saga/effects';
 import { signUpSuccess, loginSuccess, authenticateFailure } from './actions';
 import { SIGNUP_REQUEST, LOGIN_REQUEST } from './actionTypes';
 import { AuthActions, LoginRequest } from './types';
-import { TAuthPayload } from '../../interfaces/auth-interfaces';
+import { TAuthPayload } from '@interfaces/auth-interfaces';
 import { loginWithEmailPassWord, signUpUser, loginWithFaceBookGoogle } from '@services/auth-services';
-import { ELoginType } from '../../variables/auth-variables';
+import { ELoginType } from '@variables/auth-variables';
 
 function* loginSaga(action: LoginRequest) {
   try {

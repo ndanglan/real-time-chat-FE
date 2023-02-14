@@ -1,10 +1,8 @@
-import { EAuthToken } from "../variables"
+import { EAuthToken } from '@variables/auth-variables';
 
-const handleStorageToken = (data: any)=>{
-  localStorage.setItem(EAuthToken.REFRESH_TOKEN,data[EAuthToken.REFRESH_TOKEN])
-  localStorage.setItem(EAuthToken.ACCESS_TOKEN,data[EAuthToken.ACCESS_TOKEN])
-}
+const handleStorageToken = (data: any) => {
+  localStorage.setItem(EAuthToken.REFRESH_TOKEN, data[EAuthToken.REFRESH_TOKEN]);
+  localStorage.setItem(EAuthToken.ACCESS_TOKEN, data[EAuthToken.ACCESS_TOKEN]);
+};
 
-export {
-  handleStorageToken
-}
+export { handleStorageToken };

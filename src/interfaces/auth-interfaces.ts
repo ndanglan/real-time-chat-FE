@@ -1,4 +1,4 @@
-import { ELoginType } from './../variables/auth-variables';
+import { ELoginType } from '@variables/auth-variables';
 
 export type TAuthToken = {
   accessToken: string;

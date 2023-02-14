@@ -1,13 +1,15 @@
 import React, { useState } from 'react'
-import './styles/styles.scss'
+import './Login.scss'
 import { useDispatch } from 'react-redux'
-import { loginRequest } from '../../stores/auth-store/actions'
-import { ELoginType } from '../../variables/auth-variables'
+import { loginRequest } from '@stores/auth-store/actions'
+import { ELoginType } from '@variables/auth-variables'
+import { Dispatch } from 'redux'
+import { AuthActions } from '../../stores/auth-store/types'
 
 interface Props { }
 
 const LoginView = (props: Props) => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<Dispatch<AuthActions>>();
   const [email, setEmail] = useState('')
   const [password, setPassworđ] = useState('')
   return (

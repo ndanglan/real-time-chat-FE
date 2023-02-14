@@ -1,6 +1,6 @@
 import React from 'react'
 import { Navigate, Outlet } from "react-router-dom";
-import { EAuthToken } from '../../variables/auth-variables'
+import { EAuthToken } from '@variables/auth-variables'
 
 const AuthLayout = () => {
   const isAuthenticated = localStorage.getItem(EAuthToken.ACCESS_TOKEN);

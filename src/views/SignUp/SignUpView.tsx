@@ -1,6 +1,6 @@
 import React from 'react'
 
-interface Props {}
+interface Props { }
 
 const SignUpView = (props: Props) => {
   return (

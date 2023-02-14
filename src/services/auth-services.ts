@@ -6,11 +6,11 @@ import {
   FacebookAuthProvider,
 } from 'firebase/auth';
 
-import { firebaseAuth } from '../config/firebase-config';
-import { TAuthPayload } from '../interfaces/auth-interfaces';
+import { firebaseAuth } from '@config/firebase-config';
+import { TAuthPayload } from '@interfaces/auth-interfaces';
 import { FirebaseError } from 'firebase/app';
 import apiClient from '.';
-import { ELoginType } from '../variables/auth-variables';
+import { ELoginType } from '@variables/auth-variables';
 
 export const loginWithEmailPassWord = async (payload: TAuthPayload) => {
   const { email, password } = payload;
@@ -30,6 +30,8 @@ export const loginWithFaceBookGoogle = async (type: ELoginType) => {
   try {
     const provider = type === ELoginType.FACEBOOK ? new FacebookAuthProvider() : new GoogleAuthProvider();
     const result = await signInWithPopup(firebaseAuth, provider);
+    const idToken = await result.user.getIdToken();
+    console.log({ idToken });
     return result;
   } catch (error) {
     if (error instanceof FirebaseError) {

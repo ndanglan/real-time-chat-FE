@@ -1,4 +1,4 @@
-import { TAuthPayload, TLoginPayload } from '../../interfaces/auth-interfaces';
+import { TAuthPayload, TLoginPayload } from '@interfaces/auth-interfaces';
 import { SIGNUP_REQUEST, SIGNUP_SUCCESS, LOGIN_REQUEST, LOGIN_SUCCESS, AUTHENTICATE_FAILURE } from './actionTypes';
 import { AuthenticateFailure, LoginRequest, LoginSuccess, SignUpRequest, SignUpSuccess } from './types';
 
