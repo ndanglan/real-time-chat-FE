@@ -1,0 +1,40 @@
+@font-face {
+  font-family: "SegoeUI";
+  src: url("../assets/fonts/Segoe-UI.woff") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "SegoeUI";
+  src: url("../assets/fonts/Segoe-UI-Bold-Italic.woff") format("woff2");
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "SegoeUI";
+  src: url("../assets/fonts/Segoe-UI-Bold.woff") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "SegoeUI";
+  src: url("../assets/fonts/Segoe-UI-Italic.woff") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+}
+
+.font-size-default{
+  font-size: 16px;
+}
+.font-size-8{
+  font-size: 8px;
+}
+.font-size-12{
+  font-size: 12px;
+}
+.font-size-24{
+  font-size: 24px;
+}

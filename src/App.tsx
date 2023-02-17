@@ -1,10 +1,14 @@
 import React from "react";
+import { ConfigProvider } from 'antd';
 
-import Router from "@routes/index";
+import Router from "@routes";
+import theme from "./theme/antd-override";
 
 const App = () => {
   return (
-    <Router />
+    <ConfigProvider theme={theme}>
+      <Router />
+    </ConfigProvider>
   );
 };
 

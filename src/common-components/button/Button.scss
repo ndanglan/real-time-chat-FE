@@ -1,0 +1,20 @@
+@import '../../theme/index.scss';
+
+.button {
+  &.ant-btn-primary:hover,
+  &.ant-btn-primary:active {
+    background-color: $primary;
+  }
+
+  &.ant-btn-text:active {
+    background-color: $button-text-bg-active;
+  }
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:active {
+    opacity: 1;
+  }
+}

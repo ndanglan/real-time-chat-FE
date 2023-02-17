@@ -8,9 +8,8 @@ export const signUpRequest = (payload: TAuthPayload, callbacks?: (response: any)
   callbacks,
 });
 
-export const signUpSuccess = (payload: any): SignUpSuccess => ({
+export const signUpSuccess = (): SignUpSuccess => ({
   type: SIGNUP_SUCCESS,
-  payload,
 });
 
 export const loginRequest = (payload: TLoginPayload, callbacks?: (response: any) => void): LoginRequest => {

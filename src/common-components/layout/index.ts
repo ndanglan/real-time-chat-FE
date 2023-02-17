@@ -1,3 +1,4 @@
-import AuthLayout from "./AuthLayout";
+import AuthLayout from './AuthLayout';
+import NonAuthLayout from './NonAuthLayout';
 
-export default AuthLayout;
+export { AuthLayout, NonAuthLayout };

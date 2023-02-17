@@ -13,5 +13,6 @@ module.exports = override(
     '@middleware': path.resolve(__dirname, 'src/middleware'),
     '@utils': path.resolve(__dirname, 'src/utils'),
     '@views': path.resolve(__dirname, 'src/views'),
+    '@assets': path.resolve(__dirname, 'src/assets'),
   })
 );

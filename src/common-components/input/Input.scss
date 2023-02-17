@@ -1,0 +1,19 @@
+@import '../../theme/index.scss';
+
+.input {
+  &.ant-input:hover,
+  &.ant-input-focused,
+  &.ant-input:focus,
+  &.ant-input-affix-wrapper:hover,
+  &.ant-input-affix-wrapper-focused,
+  &.ant-input-affix-wrapper:focus {
+    border-color: $primary;
+    color: $primary-text-color;
+  }
+
+  &.ant-input-affix-wrapper {
+    & input {
+      color: $primary-text-color;
+    }
+  }
+}

@@ -8,6 +8,7 @@ export type TAuthToken = {
 export type TAuthPayload = {
   email?: string;
   password?: string;
+  confirmPassword?: string;
 };
 
 export type TLoginPayload = TAuthPayload & {

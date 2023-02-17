@@ -3,7 +3,7 @@ import { all, call, put, takeLatest } from 'redux-saga/effects';
 
 import { signUpSuccess, loginSuccess, authenticateFailure } from './actions';
 import { SIGNUP_REQUEST, LOGIN_REQUEST } from './actionTypes';
-import { AuthActions, LoginRequest } from './types';
+import { AuthActions, LoginRequest, SignUpRequest } from './types';
 import { TAuthPayload } from '@interfaces/auth-interfaces';
 import { loginWithEmailPassWord, signUpUser, loginWithFaceBookGoogle } from '@services/auth-services';
 import { ELoginType } from '@variables/auth-variables';
@@ -28,12 +28,13 @@ function* loginSaga(action: LoginRequest) {
   }
 }
 
-function* signupSaga(action: { payload: TAuthPayload; type: typeof SIGNUP_REQUEST }) {
+function* signupSaga(action: SignUpRequest) {
   try {
-    const { email, password } = action.payload;
-    const user: AxiosResponse<any> = yield call(signUpUser, { email, password });
+    const { email, password, confirmPassword } = action.payload;
+    const user: AxiosResponse<any> = yield call(signUpUser, { email, password, confirmPassword });
     console.log('signupSaga', user);
-    yield put(signUpSuccess({ user }));
+    yield put(signUpSuccess());
+    action.callbacks?.(user);
   } catch (error) {
     yield put(authenticateFailure({ error }));
   }

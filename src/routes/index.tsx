@@ -1,24 +1,21 @@
 import React, { Suspense, lazy } from 'react'
 import { Route, Routes } from 'react-router-dom'
-import AuthLayout from '@common-components/layout';
+import { AuthLayout, NonAuthLayout } from '@common-components/layout';
+import { ERoutes } from '@variables';
 
 const Home = lazy(() => import('@views/Home'));
-const LoginView = lazy(() => import('@views/Login'));
-const SignUpView = lazy(() => import('@views/SignUp'));
+const AccountView = lazy(() => import('@views/AccountView'));
 
 const Router = () =>
   <Suspense>
     <Routes>
-      {/* Main */}
-      <Route path="/" element={<Home />} />
-      {/*Non Auth */}
-      <Route>
-        <Route path="/sign-up" element={<SignUpView />} />
-        <Route path="/login" element={<LoginView />} />
+      <Route element={<NonAuthLayout />}>
+        <Route path={ERoutes.ACCOUNT_VIEW} element={<AccountView />} />
       </Route>
       {/* Auth */}
       <Route element={<AuthLayout />}>
-        <Route path="/auth" element={<Home />} />
+        <Route path={ERoutes.MAIN} element={<Home />} />
+        <Route path={ERoutes.HOME} element={<Home />} />
       </Route>
     </Routes>
   </Suspense>

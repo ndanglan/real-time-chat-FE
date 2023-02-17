@@ -4,7 +4,10 @@
   "printWidth": 120,
   "useTabs": false,
   "trailingComma": "all",
+  "arrowParens": "always",
+  "semi": true,
   "plugins": [
     "typescript"
-  ]
+  ],
+  "stylelintIntegration":true
 }

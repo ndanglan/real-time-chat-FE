@@ -19,7 +19,6 @@ export interface LoginRequest extends Omit<SignUpRequest, 'type'> {
 
 export type SignUpSuccess = {
   type: typeof SIGNUP_SUCCESS;
-  payload: any;
 };
 
 export interface LoginSuccess {

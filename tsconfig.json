@@ -18,15 +18,23 @@
     "baseUrl": "./src",
     "paths": {
       "@services/*": ["services/*"],
+      "@services": ["services/index"],
       "@stores/*": ["stores/*"],
+      "@stores": ["stores/index"],
       "@routes/*": ["routes/*"],
+      "@routes": ["routes/index"],
       "@variables/*": ["variables/*"],
+      "@variables": ["variables/index"],
       "@config/*": ["config/*"],
+      "@config": ["config/index"],
       "@common-components/*": ["common-components/*"],
+      "@common-components": ["common-components/index"],
       "@interfaces/*": ["interfaces/*"],
+      "@interfaces": ["interfaces/index"],
       "@middleware/*": ["middleware/*"],
       "@utils/*": ["utils/*"],
-      "@views/*": ["views/*"]
+      "@views/*": ["views/*"],
+      "@assets/*": ["assets/*"]
     }
   },
   "include": ["src"]

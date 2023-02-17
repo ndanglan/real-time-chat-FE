@@ -20,11 +20,10 @@ const reducers = (state = initialState, action: AuthActions) => {
       return {
         ...state,
         pending: false,
-        user: action.payload.user,
         error: null,
       };
     case LOGIN_REQUEST:
-      console.log(action)
+      console.log(action);
       return {
         ...state,
         pending: true,
