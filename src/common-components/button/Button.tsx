@@ -5,10 +5,12 @@ import './Button.scss';
 
 const Button = (props: ButtonProps) => {
   const { children, className, ...passProps } = props;
-  const ButtonClassName = `button ${className}`
+  const ButtonClassName = `button ${className}`;
   return (
-    <AntButton className={ButtonClassName} {...passProps}>{children}</AntButton>
-  )
-}
+    <AntButton className={ButtonClassName} {...passProps}>
+      {children}
+    </AntButton>
+  );
+};
 
-export default Button
+export default Button;

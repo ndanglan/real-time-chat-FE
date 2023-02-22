@@ -11,11 +11,12 @@ import { firebaseAuth } from '@config/firebase-config';
 import { TAuthPayload } from '@interfaces/auth-interfaces';
 import { FirebaseError } from 'firebase/app';
 import apiClient from '.';
-import { ELoginType } from '@variables/auth-variables';
+import { EAuthError, ELoginType } from '@variables/auth-variables';
 
 export const doPostUserIdToken = async (user: User, url = '/api/firebase/auth/login') => {
   const idToken = await user.getIdToken();
   const response = await apiClient.post(url, { idToken });
+
   if (response.status === 200) {
     return response.data;
   }
@@ -33,7 +34,7 @@ export const loginWithEmailPassWord = async (payload: TAuthPayload) => {
     }
   } catch (error) {
     if (error instanceof FirebaseError) {
-      console.log(error.code);
+      throw error;
     }
   }
 };
@@ -60,6 +61,8 @@ export const signUpUser = async (payload: TAuthPayload) => {
       const res = await doPostUserIdToken(result.user, endpoint);
       return res;
     }
+
+    return null;
   } catch (error) {
     if (error instanceof FirebaseError) {
       console.log(error.code);

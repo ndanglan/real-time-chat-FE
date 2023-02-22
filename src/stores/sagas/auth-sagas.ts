@@ -1,12 +1,11 @@
 import { AxiosResponse } from 'axios';
 import { all, call, put, takeLatest } from 'redux-saga/effects';
 
-import { signUpSuccess, loginSuccess, authenticateFailure } from './actions';
-import { SIGNUP_REQUEST, LOGIN_REQUEST } from './actionTypes';
-import { AuthActions, LoginRequest, SignUpRequest } from './types';
-import { TAuthPayload } from '@interfaces/auth-interfaces';
 import { loginWithEmailPassWord, signUpUser, loginWithFaceBookGoogle } from '@services/auth-services';
 import { ELoginType } from '@variables/auth-variables';
+import { LoginRequest, SignUpRequest } from '@stores/actions/auth-actions/types';
+import { authenticateFailure, loginSuccess, signUpSuccess } from '@stores/actions/auth-actions';
+import { EAuthActions } from '@stores/actions/auth-actions/constants';
 
 function* loginSaga(action: LoginRequest) {
   try {
@@ -21,27 +20,27 @@ function* loginSaga(action: LoginRequest) {
         response = yield call(loginWithEmailPassWord, { email, password });
         break;
     }
-    // yield put(loginSuccess({ user }));
+    yield put(loginSuccess(response));
     action.callbacks?.(response);
   } catch (error) {
     yield put(authenticateFailure({ error }));
+    action.callbacks?.(error);
   }
 }
 
 function* signupSaga(action: SignUpRequest) {
   try {
     const { email, password, confirmPassword } = action.payload;
-    const user: AxiosResponse<any> = yield call(signUpUser, { email, password, confirmPassword });
-    console.log('signupSaga', user);
+    const response: AxiosResponse<any> = yield call(signUpUser, { email, password, confirmPassword });
     yield put(signUpSuccess());
-    action.callbacks?.(user);
+    action.callbacks?.(response);
   } catch (error) {
     yield put(authenticateFailure({ error }));
   }
 }
 
 function* watchAuthSaga() {
-  yield all([takeLatest(LOGIN_REQUEST, loginSaga), takeLatest(SIGNUP_REQUEST, signupSaga)]);
+  yield all([takeLatest(EAuthActions.LOGIN_REQUEST, loginSaga), takeLatest(EAuthActions.SIGNUP_REQUEST, signupSaga)]);
 }
 
 export default watchAuthSaga;

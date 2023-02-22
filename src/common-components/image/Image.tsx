@@ -1,12 +1,10 @@
-import React from 'react'
-import { Image as AntdImage, ImageProps } from 'antd'
+import React from 'react';
+import { Image as AntdImage, ImageProps } from 'antd';
 
-import "./Image.scss"
+import './Image.scss';
 
 const Image = (props: ImageProps) => {
-  return (
-    <AntdImage {...props} preview={false} />
-  )
-}
+  return <AntdImage {...props} preview={false} />;
+};
 
-export default Image
+export default Image;

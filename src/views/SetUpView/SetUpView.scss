@@ -1,0 +1,7 @@
+@import '../../theme/index.scss';
+
+.setup-view_layout {
+  @include border-grey;
+  border-radius: 4px;
+  overflow: hidden;
+}

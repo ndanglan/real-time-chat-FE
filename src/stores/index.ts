@@ -3,9 +3,9 @@ import createSagaMiddleware from 'redux-saga';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
-import rootReducer from './root-reducer';
-import rootSaga from './root-saga';
-import logger from '../middleware/logger';
+import rootReducer from './reducers';
+import rootSaga from './sagas';
+import logger from '@middleware/logger';
 
 // redux-persist
 const persistConfig = {
@@ -24,5 +24,7 @@ const store = createStore(persistedReducer, applyMiddleware(sagaMiddleware, logg
 const persistor = persistStore(store);
 // Run the saga
 sagaMiddleware.run(rootSaga);
+
+export type RootDispatch = typeof store.dispatch;
 
 export { persistor, store };

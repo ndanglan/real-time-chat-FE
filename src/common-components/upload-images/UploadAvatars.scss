@@ -1,0 +1,11 @@
+@import '../../theme/index.scss';
+
+.upload-avatar_container {
+  & .upload-avatar_wrapper {
+    border: 1px solid $primary;
+
+    &.upload-avatar_wrapper__bordered {
+      border: 1px dashed $primary;
+    }
+  }
+}

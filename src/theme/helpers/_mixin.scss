@@ -1,5 +1,9 @@
-@mixin shadow-low{
+@mixin shadow-low {
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+}
+
+@mixin border-grey {
+  border: 1px solid $border-color;
 }
 
 // TEXT
@@ -25,6 +29,26 @@
 }
 .d-inline-flex {
   display: inline-flex !important;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-row-reverse {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-column-reverse {
+  display: flex;
+  flex-direction: column-reverse;
 }
 
 // JUSTIFY_CONTENT
@@ -119,6 +143,10 @@
 }
 .mt-96 {
   margin-top: 96px;
+}
+
+.mb-none {
+  margin-bottom: 0;
 }
 
 .mb-default {
@@ -230,7 +258,7 @@
   padding: 6px;
 }
 .p-8 {
-  padding:8px;
+  padding: 8px;
 }
 .p-24 {
   padding: 24px;
@@ -370,4 +398,21 @@
 }
 .pl-96 {
   padding-left: 96px;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.h-full {
+  height: 100%;
+}
+
+// Border radius
+.square {
+  border-radius: 8px;
+}
+
+.circle {
+  border-radius: 9999px;
 }

@@ -1,17 +1,32 @@
-
 @import './helpers/mixin';
-*{
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+* {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   list-style: none;
   box-sizing: border-box;
 
-  body{
+  body {
     margin: 0;
     padding: 0;
   }
 }
 
-.ant-card{
-  @include shadow-low
+.ant-card {
+  @include shadow-low;
 }
 
+.ant-layout {
+  background-color: $white;
+  & .ant-layout-sider {
+    background-color: $white;
+  }
+}
+
+.ant-upload-wrapper {
+  &.ant-upload-picture-card-wrapper {
+    & .ant-upload {
+      &.ant-upload-select {
+        margin: 0;
+      }
+    }
+  }
+}

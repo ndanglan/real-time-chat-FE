@@ -1,23 +1,27 @@
-import React, { Suspense, lazy } from 'react'
-import { Route, Routes } from 'react-router-dom'
+import React, { Suspense, lazy } from 'react';
+import { Route, Routes } from 'react-router-dom';
+
 import { AuthLayout, NonAuthLayout } from '@common-components/layout';
-import { ERoutes } from '@variables';
+import { ERoutesPath } from '@variables';
 
 const Home = lazy(() => import('@views/Home'));
 const AccountView = lazy(() => import('@views/AccountView'));
+const SetUpView = lazy(() => import('@views/SetUpView'));
 
-const Router = () =>
+const Router = () => (
   <Suspense>
     <Routes>
       <Route element={<NonAuthLayout />}>
-        <Route path={ERoutes.ACCOUNT_VIEW} element={<AccountView />} />
+        <Route path={ERoutesPath.ACCOUNT_VIEW} element={<AccountView />} />
       </Route>
       {/* Auth */}
       <Route element={<AuthLayout />}>
-        <Route path={ERoutes.MAIN} element={<Home />} />
-        <Route path={ERoutes.HOME} element={<Home />} />
+        <Route path={ERoutesPath.MAIN} element={<Home />} />
+        <Route path={ERoutesPath.HOME} element={<Home />} />
+        <Route path={ERoutesPath.SET_UP} element={<SetUpView />} />
       </Route>
     </Routes>
   </Suspense>
+);
 
-export default Router
+export default Router;

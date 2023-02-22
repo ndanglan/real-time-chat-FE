@@ -1,5 +1,5 @@
 import { EAuthToken, ELoginType, EAccountMode } from './auth-variables';
 import { AccountFormExtensions } from './account-variables';
-import { ERoutes } from './routes-variables';
+import { ERoutesPath } from './routes-variables';
 
-export { EAuthToken, ELoginType, EAccountMode, AccountFormExtensions, ERoutes };
+export { EAuthToken, ELoginType, EAccountMode, AccountFormExtensions, ERoutesPath };

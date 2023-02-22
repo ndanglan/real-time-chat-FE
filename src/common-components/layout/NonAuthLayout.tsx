@@ -1,7 +1,8 @@
-import React, { PropsWithChildren } from 'react'
+import React, { PropsWithChildren } from 'react';
+import { Outlet } from 'react-router-dom';
+import { Layout } from 'antd';
 
 import './NonAuthLayout.scss';
-import { Outlet } from 'react-router-dom';
 
 interface IMainLayoutProps extends PropsWithChildren {
   className?: string;
@@ -11,12 +12,12 @@ const NonAuthLayout = (props: IMainLayoutProps) => {
   const { className } = props;
   return (
     <>
-      <main className={'non-auth-layout ' + className}>
+      <Layout className={'non-auth-layout ' + className}>
         {props.children}
         <Outlet />
-      </main>
+      </Layout>
     </>
-  )
-}
+  );
+};
 
-export default NonAuthLayout
+export default NonAuthLayout;
